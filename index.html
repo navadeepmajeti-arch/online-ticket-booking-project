@@ -1,215 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TixHub - Online Ticket Booking</title>
-    <link rel="stylesheet" href="style.css">
+<link rel="icon"
+  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎟️</text></svg>">
+<!-- Google Fonts for modern typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet">
 </head>
+
 <body>
-
-<header>
-    <div class="logo">🎟️ Tix<span>Hub</span></div>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#events">Events</a>
-        <a href="#movies">Movies</a>
-        <a href="#sports">Sports</a>
-        <a href="#music">Music</a>
-    </nav>
-    <div class="header-actions">
-        <span id="userName"></span>
-        <button class="login-btn" onclick="showLogin()">Login</button>
-        <button class="signup-btn" onclick="showSignup()">Sign Up</button>
-        <button class="logout-btn" id="logoutBtn" onclick="logoutUser()">Logout</button>
-        <button class="admin-btn" id="adminBtn" onclick="showAdmin()">Admin</button>
-    </div>
-</header>
-
-<section class="hero" id="home">
-    <div class="hero-content">
-        <p class="small-title">BOOK YOUR EXPERIENCE</p>
-        <h1>Movies. Sports.<br><span>Music & More.</span></h1>
-        <p>Discover and book tickets for the best movies, cricket matches, concerts and events.</p>
-        <button class="explore-btn" onclick="scrollToEvents()">Explore Events →</button>
-    </div>
-</section>
-
-<section class="search-section">
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search movies, sports, concerts..." onkeyup="searchEvents()">
-        <button onclick="searchEvents()">🔍 Search</button>
-    </div>
-</section>
-
-<section class="categories" id="events">
-    <h2>Explore Categories</h2>
-    <div class="category-container">
-        <button onclick="filterEvents('all')">🎟️ All Events</button>
-        <button onclick="filterEvents('movie')">🎬 Movies</button>
-        <button onclick="filterEvents('sports')">🏏 Sports</button>
-        <button onclick="filterEvents('music')">🎵 Music</button>
-    </div>
-</section>
-
-<section class="events-section">
-    <div class="section-heading">
-        <div>
-            <p class="section-label">DON'T MISS OUT</p>
-            <h2>Popular Events</h2>
-        </div>
-        <span id="eventCount"></span>
-    </div>
-
-    <div class="event-container" id="eventContainer">
-
-        <div class="event-card movie" id="movies" data-event="Pushpa 2: The Rule" data-price="180">
-            <div class="event-image movie1"><span class="event-type">MOVIE</span><span class="rating">⭐ 8.7</span></div>
-            <div class="event-details">
-                <h3>Pushpa 2: The Rule</h3>
-                <p>🎬 Telugu • Action / Drama</p><p>📍 PVR Cinemas, Vijayawada</p><p>📅 12 October 2026</p>
-                <div class="event-bottom"><strong>₹180</strong><button onclick="openBooking('Pushpa 2: The Rule',180)">Book Now</button></div>
-            </div>
-        </div>
-
-        <div class="event-card movie" data-event="Devara" data-price="200">
-            <div class="event-image movie2"><span class="event-type">MOVIE</span><span class="rating">⭐ 8.4</span></div>
-            <div class="event-details">
-                <h3>Devara</h3><p>🎬 Telugu • Action</p><p>📍 INOX, Guntur</p><p>📅 15 October 2026</p>
-                <div class="event-bottom"><strong>₹200</strong><button onclick="openBooking('Devara',200)">Book Now</button></div>
-            </div>
-        </div>
-
-        <div class="event-card movie" data-event="Leo" data-price="220">
-            <div class="event-image movie3"><span class="event-type">MOVIE</span><span class="rating">⭐ 8.9</span></div>
-            <div class="event-details">
-                <h3>Leo</h3><p>🎬 Tamil • Action / Thriller</p><p>📍 Cinepolis, Chennai</p><p>📅 18 October 2026</p>
-                <div class="event-bottom"><strong>₹220</strong><button onclick="openBooking('Leo',220)">Book Now</button></div>
-            </div>
-        </div>
-
-        <div class="event-card movie" data-event="KGF Chapter 2" data-price="190">
-            <div class="event-image movie4"><span class="event-type">MOVIE</span><span class="rating">⭐ 8.5</span></div>
-            <div class="event-details">
-                <h3>KGF Chapter 2</h3><p>🎬 Kannada • Action / Drama</p><p>📍 PVR Cinemas, Bengaluru</p><p>📅 20 October 2026</p>
-                <div class="event-bottom"><strong>₹190</strong><button onclick="openBooking('KGF Chapter 2',190)">Book Now</button></div>
-            </div>
-        </div>
-
-        <div class="event-card sports" id="sports" data-event="India vs Australia" data-price="999">
-            <div class="event-image cricket"><span class="event-type">SPORTS</span><span class="rating">🏏 LIVE</span></div>
-            <div class="event-details">
-                <h3>India vs Australia</h3><p>🏏 Cricket • T20 Match</p><p>📍 ACA Stadium, Visakhapatnam</p><p>📅 25 October 2026</p>
-                <div class="event-bottom"><strong>₹999</strong><button onclick="openBooking('India vs Australia',999)">Book Now</button></div>
-            </div>
-        </div>
-
-        <div class="event-card sports" data-event="IPL Cricket Match" data-price="1299">
-            <div class="event-image ipl"><span class="event-type">SPORTS</span><span class="rating">🏏 IPL</span></div>
-            <div class="event-details">
-                <h3>IPL Cricket Match</h3><p>🏏 Cricket • T20</p><p>📍 Rajiv Gandhi Stadium, Hyderabad</p><p>📅 2 November 2026</p>
-                <div class="event-bottom"><strong>₹1299</strong><button onclick="openBooking('IPL Cricket Match',1299)">Book Now</button></div>
-            </div>
-        </div>
-
-        <div class="event-card music" id="music" data-event="AR Rahman Live" data-price="1499">
-            <div class="event-image concert"><span class="event-type">MUSIC</span><span class="rating">🎵 LIVE</span></div>
-            <div class="event-details">
-                <h3>AR Rahman Live</h3><p>🎵 Music • Live Concert</p><p>📍 Gachibowli Stadium, Hyderabad</p><p>📅 8 November 2026</p>
-                <div class="event-bottom"><strong>₹1499</strong><button onclick="openBooking('AR Rahman Live',1499)">Book Now</button></div>
-            </div>
-        </div>
-
-        <div class="event-card music" data-event="Sid Sriram Live" data-price="999">
-            <div class="event-image music2"><span class="event-type">MUSIC</span><span class="rating">🎤 LIVE</span></div>
-            <div class="event-details">
-                <h3>Sid Sriram Live</h3><p>🎵 Music • Telugu Concert</p><p>📍 HITEX, Hyderabad</p><p>📅 15 November 2026</p>
-                <div class="event-bottom"><strong>₹999</strong><button onclick="openBooking('Sid Sriram Live',999)">Book Now</button></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="modal" id="bookingModal">
-    <div class="booking-box">
-        <button class="close-btn" onclick="closeBooking()">×</button>
-        <h2 id="bookingTitle">Book Tickets</h2>
-        <p id="bookingPrice"></p>
-        <h3>Select Seats</h3>
-        <div class="screen">SCREEN</div>
-        <div class="seat-container" id="seatContainer"></div>
-        <div class="seat-info"><span>🟩 Available</span><span>🟦 Selected</span><span>⬛ Booked</span></div>
-        <p>Selected Seats: <strong id="selectedSeats">None</strong></p>
-        <button class="payment-btn" onclick="makePayment()">Proceed to Payment</button>
-    </div>
-</div>
-
-<div class="modal" id="ticketModal">
-    <div class="ticket">
-        <button class="close-btn" onclick="closeTicket()">×</button>
-        <div class="ticket-icon">🎟️</div>
-        <h2>Booking Confirmed!</h2>
-        <p>Your digital ticket is ready.</p>
-        <div class="ticket-details">
-            <p><strong>Event</strong><span id="ticketEvent"></span></p>
-            <p><strong>Seats</strong><span id="ticketSeats"></span></p>
-            <p><strong>Booking ID</strong><span id="ticketId"></span></p>
-            <p><strong>Total</strong><span id="ticketTotal"></span></p>
-        </div>
-        <div class="qr-code">█▀▀▀█ █▀█ █▀▀▀█<br>█ █ █ ▀▀█ █ █ █<br>█▄▄▄█ █▀█ █▄▄▄█<br>▀▀▀▀▀ ▀ ▀ ▀▀▀▀▀</div>
-        <button onclick="window.print()" class="print-btn">🖨️ Print Ticket</button>
-    </div>
-</div>
-
-<div class="modal" id="loginModal">
-    <div class="login-box">
-        <button class="close-btn" onclick="closeLogin()">×</button>
-        <h2>Welcome Back 👋</h2>
-        <p>Login to continue booking tickets.</p>
-        <input type="email" id="loginEmail" placeholder="Enter your email">
-        <input type="password" id="loginPassword" placeholder="Enter password">
-        <button onclick="loginUser()">Login</button>
-        <p class="small-link">New user? <a href="#" onclick="switchToSignup()">Create an account</a></p>
-    </div>
-</div>
-
-<div class="modal" id="signupModal">
-    <div class="login-box">
-        <button class="close-btn" onclick="closeSignup()">×</button>
-        <h2>Create Account 📝</h2>
-        <p>Register before booking tickets.</p>
-        <input type="text" id="signupName" placeholder="Enter your name">
-        <input type="email" id="signupEmail" placeholder="Enter your email">
-        <input type="password" id="signupPassword" placeholder="Create password">
-        <button onclick="signupUser()">Sign Up</button>
-        <p class="small-link">Already registered? <a href="#" onclick="switchToLogin()">Login</a></p>
-    </div>
-</div>
-
-<div class="modal" id="adminModal">
-    <div class="admin-box">
-        <button class="close-btn" onclick="closeAdmin()">×</button>
-        <h2>Admin Dashboard</h2>
-        <p>Admin module: manage events, monitor bookings and promotions.</p>
-        <div class="admin-stats">
-            <div><strong id="totalUsers">0</strong><span>Users</span></div>
-            <div><strong id="totalBookings">0</strong><span>Bookings</span></div>
-            <div><strong id="totalSales">₹0</strong><span>Sales</span></div>
-        </div>
-        <h3>Promotion</h3>
-        <input type="text" id="promoInput" placeholder="Example: 10% festival offer">
-        <button onclick="savePromotion()">Save Promotion</button>
-        <p id="promotionText"></p>
-    </div>
-</div>
-
-<footer>
-    <div class="footer-logo">🎟️ TixHub</div>
-    <p>Your one-stop destination for movies, sports and music events.</p>
-    <div class="footer-links"><a href="#home">Home</a><a href="#events">Events</a><a href="#movies">Movies</a><a href="#sports">Sports</a><a href="#music">Music</a></div>
-    <p class="copyright">© 2026 TixHub. All Rights Reserved.</p>
-</footer>
-
-<script src="script.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>
